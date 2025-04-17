@@ -1,2 +1,7 @@
+#ifndef BATTLE.H
+#define BATTLE.H
 
-void Battle();
+void Battle(int _monster);
+void DrawBattleScreen();
+
+#endif

@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include "battle.h"
+#include "character.h"
+
 int main(){
-    Battle();
+    Init();
+    Battle(MONSTER_SLIME);
+    DrawBattleScreen();
     return 0;
 }
