@@ -49,6 +49,7 @@ void physicAttack(int attacker){
 }
 
 void spellAttack(int attacker){
+    characters[CHARACTER_PLAYER].command = 0;
     selectSpellCommand(); 
     switch (characters[attacker].command){
         case SPELL_FIRE: //fight

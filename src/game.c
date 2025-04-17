@@ -4,25 +4,16 @@
 #include "effect_command.h"
 #include "player.h"
 #include "levelup.h"
+#include "mainmenu.h"
 #include <time.h>
 #include <stdlib.h>
-
-void MainLoop(){
-    while (characters[CHARACTER_PLAYER].hitpoints > 0){
-        int nextMonster = MONSTER_START_INDEX + rand() % MONSTER_COUNT;
-        Battle(nextMonster);
-    }
-
-    printf("ゲームオーバー！\n");
-}
 
 int main(){
     srand(time(NULL));
     InitPlayer();
     //initialize player
-
     Init();
-    MainLoop();
+    Mainmenu();
     DrawBattleScreen();
     return 0;
 }

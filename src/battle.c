@@ -3,6 +3,7 @@
 #include "effect_command.h"
 #include "player.h"
 #include "levelup.h"
+#include "mainmenu.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -16,6 +17,19 @@ char commandNames[COMMAND_MAX][4 * 3 + 1]={
     "呪文", // COMMAND_SPELL
     "逃げる", // COMMAND_RUN
    };
+
+void Battleloop(){
+    while (characters[CHARACTER_PLAYER].hitpoints > 0){
+        int nextMonster = MONSTER_START_INDEX + rand() % MONSTER_COUNT;
+        Battle(nextMonster);
+    }
+
+    printf("ゲームオーバー！\n");
+    printf("メニューに戻ります。\n");
+    getchar();
+    system("clear");
+    Mainmenu();
+}
 
 void enableRawMode(){
     struct termios term;

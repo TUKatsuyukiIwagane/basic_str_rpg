@@ -9,7 +9,7 @@ enum{
 }; 
 
 
-
+void Battleloop();
 void Battle(int _monster);
 void enableRawMode();
 void disableRawMode();
