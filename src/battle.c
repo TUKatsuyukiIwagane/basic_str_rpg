@@ -1,6 +1,8 @@
 #include "battle.h"
 #include "character.h"
 #include "effect_command.h"
+#include "player.h"
+#include "levelup.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -33,7 +35,7 @@ void disableRawMode(){
 
 void Battle(int _monster){
     characters[CHARACTER_MONSTER] = monsters[_monster];
-    printf("%d %s があらわれた！\n", characters[CHARACTER_MONSTER].level ,characters[CHARACTER_MONSTER].name);
+    printf("Lv %d %s があらわれた！\n", characters[CHARACTER_MONSTER].level ,characters[CHARACTER_MONSTER].name);
     //wait entering keyboard
     getchar();
     characters[CHARACTER_PLAYER].target = CHARACTER_MONSTER;
@@ -72,10 +74,14 @@ void Battle(int _monster){
                 case CHARACTER_MONSTER:
                     strcpy(characters[characters[i].target].aa, "\n");
                     DrawBattleScreen(); 
-                    printf("%d %s を倒した！\n", characters[CHARACTER_MONSTER].level, characters[characters[i].target].name);
+                    printf("Lv %d %s を倒した！\n", characters[CHARACTER_MONSTER].level, characters[characters[i].target].name);
                     int rewardgold = 1 + rand() % characters[characters[i].target].gold;
+                    characters[CHARACTER_PLAYER].gold += rewardgold;
+                    int rewardexp = 1 + rand() % characters[characters[i].target].experience;
+                    characters[CHARACTER_PLAYER].experience += rewardexp;
                     printf("経験値 %d を手に入れた！\n", characters[characters[i].target].experience);
                     printf("%d ゴールドを手に入れた！\n", rewardgold);
+                    LevelUp(CHARACTER_PLAYER);
                     break;
                 }
                 getchar(); // wating enter key
