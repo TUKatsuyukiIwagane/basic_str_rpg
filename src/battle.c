@@ -46,10 +46,11 @@ void Battle(int _monster){
 
             switch (characters[i].command){
             case COMMAND_FIGHT: //fight
-                physic_attack(i);
+                physicAttack(i);
                 getchar();
                 break;
             case COMMAND_SPELL: //spell magic
+                spellAttack(i);
                 break;
             case COMMAND_RUN: //run away
                 break;
