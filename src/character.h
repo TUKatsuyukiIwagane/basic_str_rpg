@@ -10,9 +10,12 @@ typedef struct{
     int maxMp; // 最大 MP
     int attack; // 攻撃力
     char name[5 * 3 + 1]; // キャラクターの名前
-    char aa[256]; // アスキーアート
+    char aa[128]; // アスキーアート
     int command; // 選択中のコマンド
     int target; // 攻撃対象
+    int experience; // 経験値
+    int level; // レベル
+    int gold; // ゴールド
    }Character;
 
 // モンスターの種類の定義

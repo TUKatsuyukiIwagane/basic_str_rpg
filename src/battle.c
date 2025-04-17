@@ -73,6 +73,8 @@ void Battle(int _monster){
                     strcpy(characters[characters[i].target].aa, "\n");
                     DrawBattleScreen(); 
                     printf("%s を倒した！\n", characters[characters[i].target].name);
+                    printf("経験値 %d を手に入れた！\n", characters[characters[i].target].experience);
+                    printf("%d ゴールドを手に入れた！\n", characters[characters[i].target].gold);
                     break;
                 }
                 getchar(); // wating enter key
