@@ -1,5 +1,6 @@
 #include "battle.h"
 #include "character.h"
+#include "effect_command.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -45,17 +46,8 @@ void Battle(int _monster){
 
             switch (characters[i].command){
             case COMMAND_FIGHT: //fight
-            printf("%s の攻撃！", characters[i].name);
-            //calc damage
-            int damage = 1 + rand() % characters[i].attack;
-            //adapt damage
-            characters[characters[i].target].hitpoints -= damage;
-            if (characters[characters[i].target].hitpoints < 0){
-                characters[characters[i].target].hitpoints = 0;
-                } // does not go below 0
-            DrawBattleScreen();
-            printf("%s に %d のダメージを与えた！\n", characters[characters[i].target].name, damage);
-            getchar();
+                physic_attack(i);
+                getchar();
                 break;
             case COMMAND_SPELL: //spell magic
                 break;

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "battle.h"
 #include "character.h"
+#include "effect_command.h"
 #include <time.h>
 #include <stdlib.h>
 
@@ -15,7 +16,7 @@ void MainLoop(){
 
 int main(){
     srand(time(NULL));
-    
+
     Init();
     MainLoop();
     DrawBattleScreen();
