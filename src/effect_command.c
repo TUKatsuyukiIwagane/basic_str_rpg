@@ -132,12 +132,13 @@ void selectSpellCommand(){
     }
     
 }
-void runAway(){
+int runAway(){
         //run away
         if(rand() % 2 == 0){
         printf("%s は逃げた！\n", characters[CHARACTER_PLAYER].name);
         getchar(); // wating enter key
-        return;
+        return 0;
     }
     printf("%s は逃げられなかった！\n", characters[CHARACTER_PLAYER].name);
+    return 1;
 }

@@ -19,6 +19,6 @@ void physicAttack(int attacker);
 void spellAttack(int attacker);
 void spellEffect(int attacker , int spellnum);
 void selectSpellCommand();
-void runAway();
+int runAway();
 
 #endif

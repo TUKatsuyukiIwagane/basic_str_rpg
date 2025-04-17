@@ -54,7 +54,9 @@ void Battle(int _monster){
                 getchar();
                 break;
             case COMMAND_RUN: //run away
-                runAway();
+                if (runAway() == 0){
+                    return;
+                }
                 getchar(); // wating enter key
                 break;
             
