@@ -6,9 +6,11 @@ typedef struct{
     int maxHp; // 最大 HP
     int magicpoints; // MP
     int maxMp; // 最大 MP
+    int attack; // 攻撃力
     char name[4 * 3 + 1]; // キャラクターの名前
     char aa[256]; // アスキーアート
     int command; // 選択中のコマンド
+    int target; // 攻撃対象
    }Character;
 
 // モンスターの種類の定義

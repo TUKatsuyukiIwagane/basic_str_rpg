@@ -2,6 +2,8 @@
 #include "character.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <string.h>
 
 char commandNames[COMMAND_MAX][4 * 3 + 1]={
     "戦う", // COMMAND_FIGHT
@@ -14,14 +16,26 @@ void Battle(int _monster){
     printf("%s があらわれた！\n", characters[CHARACTER_MONSTER].name);
     //wait entering keyboard
     getchar();
+    characters[CHARACTER_PLAYER].target = CHARACTER_MONSTER;
+    characters[CHARACTER_MONSTER].target = CHARACTER_PLAYER;
     while(1){
         SelectCommand(); //for selecting command
         //roop during battle
         for (int i = 0; i < CHARACTER_MAX; i++){
             DrawBattleScreen();
+
             switch (characters[i].command){
             case COMMAND_FIGHT: //fight
             printf("%s の攻撃！", characters[i].name);
+            //calc damage
+            int damage = 1 + rand() % characters[i].attack;
+            //adapt damage
+            characters[characters[i].target].hitpoints -= damage;
+            if (characters[characters[i].target].hitpoints < 0){
+                characters[characters[i].target].hitpoints = 0;
+                } // does not go below 0
+            DrawBattleScreen();
+            printf("%s に %d のダメージを与えた！\n", characters[characters[i].target].name, damage);
             getchar();
                 break;
             case COMMAND_SPELL: //spell magic
@@ -32,12 +46,29 @@ void Battle(int _monster){
             default:
                 break;
             }
+            if (characters[characters[i].target].hitpoints <= 0){
+                switch (characters[i].target)
+                {
+                case CHARACTER_PLAYER:
+                    printf("%s は死んでしまった！\n", characters[CHARACTER_PLAYER].name);
+                    break;
+                case CHARACTER_MONSTER:
+                    strcpy(characters[characters[i].target].aa, "\n");
+                    DrawBattleScreen(); 
+                    printf("%s を倒した！\n", characters[characters[i].target].name);
+                    break;
+                }
+                getchar(); // wating enter key
+
+                return;
+               }
         }
     }
 }
 
 void SelectCommand(){
     while (1){
+        characters[CHARACTER_PLAYER].command = (COMMAND_MAX + characters[CHARACTER_PLAYER].command) % COMMAND_MAX;
         DrawBattleScreen();
         for (int i = 0; i < COMMAND_MAX; i++){
             if (i == characters[CHARACTER_PLAYER].command){
@@ -47,10 +78,6 @@ void SelectCommand(){
             }
             printf("%s\n", commandNames[i]);
         }
-        for (int i = 0; i < COMMAND_MAX; i++){
-            characters[CHARACTER_PLAYER].command = (COMMAND_MAX + characters[CHARACTER_PLAYER].command) % COMMAND_MAX;
-            printf("%s\n", commandNames[i]);
-            }
             switch (getchar()){
                 //branch out by key entered
             case 'w': // if enter w key
@@ -73,8 +100,8 @@ void SelectCommand(){
 
 void DrawBattleScreen(){
     system("clear");
-    printf("%s/n", characters[CHARACTER_PLAYER].name);
-    printf("HP: %d/%d MP: %d/%d/n",
+    printf("%s\n", characters[CHARACTER_PLAYER].name);
+    printf("HP: %d/%d MP: %d/%d\n",
     characters[CHARACTER_PLAYER].hitpoints,
     characters[CHARACTER_PLAYER].maxHp,
     characters[CHARACTER_PLAYER].magicpoints,
