@@ -1,5 +1,7 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
+#define MONSTER_START_INDEX 1
+#define MONSTER_COUNT 2
 
 typedef struct{
     int hitpoints; // HP
@@ -7,7 +9,7 @@ typedef struct{
     int magicpoints; // MP
     int maxMp; // 最大 MP
     int attack; // 攻撃力
-    char name[4 * 3 + 1]; // キャラクターの名前
+    char name[5 * 3 + 1]; // キャラクターの名前
     char aa[256]; // アスキーアート
     int command; // 選択中のコマンド
     int target; // 攻撃対象
@@ -17,6 +19,7 @@ typedef struct{
 enum{
     MONSTER_PLAYER, // プレイヤ
     MONSTER_SLIME, // スライム
+    MONSTER_MADHAND, //マドハンド
     MONSTER_MAX // モンスターの種類数
    }; 
 

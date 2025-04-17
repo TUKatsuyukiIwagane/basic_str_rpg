@@ -24,6 +24,17 @@ Character monsters[MONSTER_MAX] = {
         "スライム", // name
         "／・Д・＼¥n"  // AA
     },
+
+    //madhand
+    {
+        8, // HP
+        8, // maxHP
+        4, // MP
+        4, // maxMP
+        5, // attack
+        "マドハンド", // name
+        "艸　艸¥n"  // AA
+    },
 };
 
 
