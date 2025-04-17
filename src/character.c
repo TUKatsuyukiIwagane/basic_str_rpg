@@ -24,6 +24,7 @@ Character monsters[MONSTER_MAX] = {
     },
 };
 
+
 void Init(){
     characters[CHARACTER_PLAYER] = monsters[MONSTER_PLAYER];
    } 

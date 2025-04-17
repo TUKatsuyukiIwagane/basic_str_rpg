@@ -1,5 +1,5 @@
-#ifndef CHARACTER.H
-#define CHARACTER.H
+#ifndef CHARACTER_H
+#define CHARACTER_H
 
 typedef struct{
     int hitpoints; // HP
@@ -8,6 +8,7 @@ typedef struct{
     int maxMp; // 最大 MP
     char name[4 * 3 + 1]; // キャラクターの名前
     char aa[256]; // アスキーアート
+    int command; // 選択中のコマンド
    }Character;
 
 // モンスターの種類の定義
