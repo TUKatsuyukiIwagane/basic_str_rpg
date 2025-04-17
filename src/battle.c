@@ -4,12 +4,31 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <termio.h>
+#include <unistd.h>
+#include <fcntl.h>
 
 char commandNames[COMMAND_MAX][4 * 3 + 1]={
     "戦う", // COMMAND_FIGHT
     "呪文", // COMMAND_SPELL
     "逃げる", // COMMAND_RUN
    };
+
+void enableRawMode(){
+    struct termios term;
+    tcgetattr(STDIN_FILENO, &term);
+    term.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &term);
+    fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);
+}
+
+void disableRawMode(){
+    struct termios term;
+    tcgetattr(STDIN_FILENO, &term);
+    term.c_lflag |= ICANON | ECHO;
+    tcsetattr(STDIN_FILENO, TCSANOW, &term);
+    fcntl(STDIN_FILENO, F_SETFL, 0);
+}
 
 void Battle(int _monster){
     characters[CHARACTER_MONSTER] = monsters[_monster];
@@ -67,6 +86,7 @@ void Battle(int _monster){
 }
 
 void SelectCommand(){
+    enableRawMode();
     while (1){
         characters[CHARACTER_PLAYER].command = (COMMAND_MAX + characters[CHARACTER_PLAYER].command) % COMMAND_MAX;
         DrawBattleScreen();
@@ -87,13 +107,13 @@ void SelectCommand(){
                 characters[CHARACTER_PLAYER].command++;
                 break;
             case '\n':
+                disableRawMode();
                 return;
             default:
                 break;
             }
-                while(getchar() != '\n'){
-                    ; //ignore multiple enter
-                }
+
+            usleep(100000);
     }
     
 }

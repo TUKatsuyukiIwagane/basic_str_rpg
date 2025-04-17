@@ -11,6 +11,8 @@ enum{
 
 
 void Battle(int _monster);
+void enableRawMode();
+void disableRawMode();
 void SelectCommand();
 void DrawBattleScreen();
 
