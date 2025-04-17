@@ -12,6 +12,11 @@ Character monsters[MONSTER_MAX] = {
         15, // maxMP
         3, // attack
         "勇者", // name
+        0, // AA
+        0, // command
+        0, // target
+        0, // experience
+        1, // level
     },
 
     //slime

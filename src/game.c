@@ -2,6 +2,8 @@
 #include "battle.h"
 #include "character.h"
 #include "effect_command.h"
+#include "player.h"
+#include "levelup.h"
 #include <time.h>
 #include <stdlib.h>
 

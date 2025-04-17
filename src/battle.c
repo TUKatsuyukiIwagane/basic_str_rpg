@@ -33,7 +33,7 @@ void disableRawMode(){
 
 void Battle(int _monster){
     characters[CHARACTER_MONSTER] = monsters[_monster];
-    printf("%s があらわれた！\n", characters[CHARACTER_MONSTER].name);
+    printf("%d %s があらわれた！\n", characters[CHARACTER_MONSTER].level ,characters[CHARACTER_MONSTER].name);
     //wait entering keyboard
     getchar();
     characters[CHARACTER_PLAYER].target = CHARACTER_MONSTER;
@@ -72,7 +72,7 @@ void Battle(int _monster){
                 case CHARACTER_MONSTER:
                     strcpy(characters[characters[i].target].aa, "\n");
                     DrawBattleScreen(); 
-                    printf("%s を倒した！\n", characters[characters[i].target].name);
+                    printf("%d %s を倒した！\n", characters[CHARACTER_MONSTER].level, characters[characters[i].target].name);
                     int rewardgold = 1 + rand() % characters[characters[i].target].gold;
                     printf("経験値 %d を手に入れた！\n", characters[characters[i].target].experience);
                     printf("%d ゴールドを手に入れた！\n", rewardgold);
