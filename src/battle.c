@@ -51,8 +51,11 @@ void Battle(int _monster){
                 break;
             case COMMAND_SPELL: //spell magic
                 spellAttack(i);
+                getchar();
                 break;
             case COMMAND_RUN: //run away
+                runAway();
+                getchar(); // wating enter key
                 break;
             
             default:

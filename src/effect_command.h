@@ -3,6 +3,7 @@
 
 enum{
     SPELL_FIRE, //attack spell
+    SPELL_FULLPOWER, //attack spell
     SPELL_HEAL, //heal spell
     SPELL_MAX // amount of spell
    }; 
@@ -18,5 +19,6 @@ void physicAttack(int attacker);
 void spellAttack(int attacker);
 void spellEffect(int attacker , int spellnum);
 void selectSpellCommand();
+void runAway();
 
 #endif

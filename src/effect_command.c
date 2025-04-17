@@ -16,6 +16,12 @@ Spell spells[SPELL_MAX] = {
         8, // attack
         "ファイア" // name
     },
+    //fullpower
+    {
+        15, // consumeMP
+        15, // attack
+        "全開放" // name
+    },
     //heal
     {
         5, // consumeMP
@@ -26,6 +32,7 @@ Spell spells[SPELL_MAX] = {
 
 char spellNames[SPELL_MAX][4 * 3 + 1]={
     "ファイア", // SPELL_FIRE
+    "全開放", // SPELL_FULLPOWER
     "ヒール", // SPELL_HEAL
    };
 
@@ -46,6 +53,10 @@ void spellAttack(int attacker){
     switch (characters[attacker].command){
         case SPELL_FIRE: //fight
             spellEffect(attacker, SPELL_FIRE);
+            getchar();
+            break;
+        case SPELL_FULLPOWER: //fight
+            spellEffect(attacker, SPELL_FULLPOWER);
             getchar();
             break;
         case SPELL_HEAL: //spell magic
@@ -120,4 +131,13 @@ void selectSpellCommand(){
             usleep(100000);
     }
     
+}
+void runAway(){
+        //run away
+        if(rand() % 2 == 0){
+        printf("%s は逃げた！\n", characters[CHARACTER_PLAYER].name);
+        getchar(); // wating enter key
+        return;
+    }
+    printf("%s は逃げられなかった！\n", characters[CHARACTER_PLAYER].name);
 }
