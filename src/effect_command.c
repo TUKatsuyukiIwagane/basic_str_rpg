@@ -76,7 +76,7 @@ void spellEffect(int attacker, int spellnum){
         printf("MPが、足りない！\n");
         return;
         } // does not go below 0 and attack failed
-    //calc damage
+
         //heal func
         if (spells[spellnum].attack == 0){
             int damage = 1 + rand() % spells[spellnum].costMP;
@@ -89,6 +89,7 @@ void spellEffect(int attacker, int spellnum){
                 printf("%s は %d 回復した！\n", characters[attacker].name, damage);
             return;
         }
+    //calc damage
     int damage = 1 + rand() % spells[spellnum].attack;
     //adapt damage
     characters[characters[attacker].target].hitpoints -= damage;
