@@ -16,6 +16,8 @@ void MainLoop(){
 
 int main(){
     srand(time(NULL));
+    InitPlayer();
+    //initialize player
 
     Init();
     MainLoop();
