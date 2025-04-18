@@ -35,7 +35,7 @@ void storyProcess() {
         storyFlags.researchCastle = 1;
     }
     if (storyFlags.defeatedBoss == 0) {
-        printf("You defeated the boss!\n");
+        printf("ボスをたおした！!\n");
         storyFlags.defeatedBoss = 1;
     }
 }
