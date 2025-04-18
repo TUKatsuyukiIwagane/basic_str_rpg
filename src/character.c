@@ -17,6 +17,7 @@ Character monsters[MONSTER_MAX] = {
         0, // target
         0, // experience
         1, // level
+        1 // in player controlled
     },
 
     //slime
@@ -33,6 +34,7 @@ Character monsters[MONSTER_MAX] = {
         3, // experience
         1, // level
         3, // gold
+        0 // not in player controlled
     },
 
     //madhand
@@ -49,6 +51,7 @@ Character monsters[MONSTER_MAX] = {
         5, // experience
         3, // level
         12, // gold
+        0 // not in player controlled
     },
 };
 

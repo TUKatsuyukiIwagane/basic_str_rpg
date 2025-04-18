@@ -16,6 +16,7 @@ typedef struct{
     int experience; // 経験値
     int level; // レベル
     int gold; // ゴールド
+    int inPlayerControlled //プレイヤーが管理しているか否か
    }Character;
 
 // モンスターの種類の定義
