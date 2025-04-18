@@ -1,6 +1,9 @@
 #include "mainmenu.h"
 #include "character.h"
 #include "battle.h"
+#include "subfunc.h"
+#include "story_func.h"
+#include "flags.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -19,7 +22,7 @@ void Mainmenu(){
         switch (characters[CHARACTER_PLAYER].command){
             case MAINMENU_STORY:
                 printf("物語\n");
-                
+                storyProcess();
                 getchar();
                 break;
             case MAINMENU_BATTLE:
