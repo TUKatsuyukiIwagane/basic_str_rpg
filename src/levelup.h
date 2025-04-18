@@ -4,7 +4,6 @@
 
 extern const int experienceTable[MAX_LEVEL];
 
-int power();
 void LevelUp(int character);
 
 

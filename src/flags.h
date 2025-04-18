@@ -16,7 +16,6 @@ extern Flags storyFlags;
 
 
 void initFlags();
-void storyProcess();
 // void runEventIfFlagUnset(int flagId, void (*eventFunc)());
 void checkEvent(int flagId, void (*eventFunc)());
 

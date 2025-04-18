@@ -1,5 +1,6 @@
 #include "levelup.h"
 #include "character.h"
+#include"subfunc.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,12 +18,6 @@ const int experienceTable[MAX_LEVEL] = {
     450, // level 9
 };
 
-int power(int num, int power){
-    for (int i = 0; i < power; i++){
-        num *= num;
-    }
-    return num;
-}
 
 void LevelUp(int character){
     if (characters[character].experience >= experienceTable[characters[character].level]){

@@ -19,6 +19,7 @@ void Mainmenu(){
         switch (characters[CHARACTER_PLAYER].command){
             case MAINMENU_STORY:
                 printf("物語\n");
+                
                 getchar();
                 break;
             case MAINMENU_BATTLE:
