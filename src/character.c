@@ -28,7 +28,7 @@ Character monsters[MONSTER_MAX] = {
         0, // maxMP
         2, // attack
         "スライム", // name
-        "／・Д・＼¥n",  // AA
+        "／・Д・＼\n",  // AA
         0, // command
         0, // target
         3, // experience
@@ -45,7 +45,7 @@ Character monsters[MONSTER_MAX] = {
         4, // maxMP
         5, // attack
         "マドハンド", // name
-        "艸　艸¥n",  // AA
+        "艸　艸\n",  // AA
         0, // command
         0, // target
         5, // experience

@@ -12,6 +12,11 @@ char choiceYesorNo[CHOICE_MAX][4 * 3 + 1]={
     "いいえ" // say no
 };
 
+char choiceDecide[CHOICE_MAX][4 * 3 + 1]={
+    "立ち向かう", // decide to fight
+    "逃げ出す" // decide to run away
+};
+
 void storyProcess() {
     // Example of how to use the flags
     while(1){
@@ -21,7 +26,7 @@ void storyProcess() {
         }
         if (storyFlags.kingAppeared == 0) {
             descriptionStory("story_descript.txt", "[king_first_appearance]");
-            selectYesorNo();
+            selectChoice(choiceYesorNo);
             switch (characters[CHARACTER_PLAYER].command) {
                 case CHOICE_ONE:
                     descriptionStory("story_descript.txt", "[king_suggest]");
@@ -71,11 +76,21 @@ void storyProcess() {
         else if(storyFlags.getVillage == 0){
             descriptionStory("story_descript.txt", "[get_village]");
             storyFlags.getVillage = 1;
-
         }
-            
+        else if(storyFlags.warriorAppeared == 0){
+            descriptionStory("story_descript.txt", "[warrior_appeared]");
+            selectChoice(choiceYesorNo);
+            switch (characters[CHARACTER_PLAYER].command) {
+                case CHOICE_ONE:
+                    descriptionStory("story_descript.txt", "[warrior_join]");
+                    storyFlags.warriorAppeared = 1;
+                    break;
+                case CHOICE_TWO:
+                    descriptionStory("story_descript.txt", "[warrior_refuse]");
+                    break;
+                }
+        }
     }
-
     // if (storyFlags.getWeapon == 0) {
     //     printf("武器を手にいれた！\n");
     //     storyFlags.getWeapon = 1;
@@ -103,7 +118,7 @@ void descriptionStory(const char *filename, const char *storytags) {
     getchar(); // wait for enter key
 }
 
-void selectYesorNo() {
+void selectChoice(char choice_format[][4 * 3 + 1]) {
     enableRawMode();
     while (1) {
         characters[CHARACTER_PLAYER].command = (CHOICE_MAX + characters[CHARACTER_PLAYER].command) % CHOICE_MAX;
@@ -114,7 +129,7 @@ void selectYesorNo() {
             } else {
                 printf(" "); // 選択されていないコマンドの前に全角スペースを描画
             }
-            printf("%s\n", choiceYesorNo[i]);
+            printf("%s\n", choice_format[i]);
         }
         switch (getchar()) {
             //branch out by key entered

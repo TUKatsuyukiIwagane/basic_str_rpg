@@ -9,6 +9,7 @@ void initFlags() {
     storyFlags.defeatedSlime = 0;
     storyFlags.getWeapon = 0;
     storyFlags.getVillage = 0;
+    storyFlags.warriorAppeared = 0;
     storyFlags.defeatedEnemy = 0;
     storyFlags.getAlly = 0;
     storyFlags.researchCastle = 0;
