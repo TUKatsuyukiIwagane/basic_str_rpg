@@ -5,6 +5,7 @@ Flags storyFlags = {0};
 void initFlags() {
     // Initialize all flags to 0
     storyFlags.started = 0;
+    storyFlags.kingAppeared = 0;
     storyFlags.getWeapon = 0;
     storyFlags.defeatedEnemy = 0;
     storyFlags.getAlly = 0;

@@ -28,6 +28,8 @@ void Battleloop(){
     printf("メニューに戻ります。\n");
     getchar();
     system("clear");
+    characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+    characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
     Mainmenu();
 }
 

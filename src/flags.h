@@ -4,6 +4,7 @@
 
 typedef struct {
     int started;
+    int kingAppeared;
     int getWeapon;
     int defeatedEnemy;
     int getAlly;
