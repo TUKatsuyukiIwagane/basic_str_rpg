@@ -7,6 +7,7 @@ typedef struct {
     int kingAppeared;
     int defeatedSlime;
     int getWeapon;
+    int getVillage;
     int defeatedEnemy;
     int getAlly;
     int researchCastle;

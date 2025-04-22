@@ -62,10 +62,16 @@ void storyProcess() {
         }
         else if(storyFlags.getWeapon == 0){
             descriptionStory("story_descript.txt", "[get_weapon]");
-            //武器とかの処理を開発したら修正。一時的にこう。
+            //最悪。武器とかの処理を開発したら関数化。一時的にこう。
             characters[CHARACTER_PLAYER].attack += 2;
             printf("攻撃力 %d -> %d\n", characters[CHARACTER_PLAYER].attack - 2, characters[CHARACTER_PLAYER].attack);
+            getchar(); // wait for enter key
             storyFlags.getWeapon = 1;
+        }
+        else if(storyFlags.getVillage == 0){
+            descriptionStory("story_descript.txt", "[get_village]");
+            storyFlags.getVillage = 1;
+
         }
             
     }
