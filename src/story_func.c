@@ -5,11 +5,20 @@
 
 void storyProcess() {
     // Example of how to use the flags
-    if (storyFlags.started == 0) {
-        printFile("story_start.txt");
-        storyFlags.started = 1;
+    while(1){
+        if (storyFlags.started == 0) {
+            descriptionStory("story_descript.txt", "[start]");
+            storyFlags.started = 1;
+        }
+        else if (storyFlags.started == 1){
+
+        }
+        {
+        }
+        
     }
-    else if (storyFlags.getWeapon == 0) {
+
+    if (storyFlags.getWeapon == 0) {
         printf("武器を手にいれた！\n");
         storyFlags.getWeapon = 1;
     }
@@ -29,4 +38,9 @@ void storyProcess() {
         printf("ボスをたおした！!\n");
         storyFlags.defeatedBoss = 1;
     }
+}
+
+void descriptionStory(const char *filename, const char *storytags) {
+    printFile(filename, storytags);
+    getchar(); // wait for enter key
 }
