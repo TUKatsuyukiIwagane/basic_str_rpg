@@ -44,7 +44,7 @@ void selectMainmenuCommand(){
     enableRawMode();
     while (1){
         characters[CHARACTER_PLAYER].command = (MAINMENU_MAX + characters[CHARACTER_PLAYER].command) % MAINMENU_MAX;
-        DrawBattleScreen();
+        system("clear");
         for (int i = 0; i < MAINMENU_MAX; i++){
             if (i == characters[CHARACTER_PLAYER].command){
             printf("＞"); // 選択中のコマンドなら，カーソルを描画

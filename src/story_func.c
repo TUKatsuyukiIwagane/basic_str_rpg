@@ -40,7 +40,8 @@ void storyProcess() {
                     Mainmenu();
                     break;
             }
-            descriptionStory("story_descript.txt", "[king_ask_end]");
+            descriptionStory("story_descript.txt", "[go_battle_slime]");
+            Battle(MONSTER_SLIME);
         }
 
     // if (storyFlags.getWeapon == 0) {
@@ -66,6 +67,7 @@ void storyProcess() {
 }
 }
 void descriptionStory(const char *filename, const char *storytags) {
+    system("clear");
     printFile(filename, storytags);
     getchar(); // wait for enter key
 }
@@ -74,7 +76,7 @@ void selectYesorNo() {
     enableRawMode();
     while (1) {
         characters[CHARACTER_PLAYER].command = (CHOICE_MAX + characters[CHARACTER_PLAYER].command) % CHOICE_MAX;
-        DrawBattleScreen();
+        system("clear");
         for (int i = 0; i < CHOICE_MAX; i++) {
             if (i == characters[CHARACTER_PLAYER].command) {
                 printf("＞"); // 選択中のコマンドなら，カーソルを描画
