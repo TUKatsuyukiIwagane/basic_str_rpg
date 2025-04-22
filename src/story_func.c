@@ -39,10 +39,36 @@ void storyProcess() {
                     characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
                     Mainmenu();
                     break;
+                }
             }
+        else if (storyFlags.defeatedSlime == 0) {
             descriptionStory("story_descript.txt", "[go_battle_slime]");
             Battle(MONSTER_SLIME);
+            if (characters[characters[CHARACTER_PLAYER].target].hitpoints == 0) {
+                storyFlags.defeatedSlime = 1;
+            }
+            else{
+                descriptionStory("story_descript.txt", "[runAway_slime]");
+                characters[CHARACTER_PLAYER].hitpoints = 0;
+                printf("ゲームオーバー！\n");
+                printf("メニューに戻ります。\n");
+                getchar();
+                system("clear");
+                characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                Mainmenu();
+                break;
+            }
         }
+        else if(storyFlags.getWeapon == 0){
+            descriptionStory("story_descript.txt", "[get_weapon]");
+            //武器とかの処理を開発したら修正。一時的にこう。
+            characters[CHARACTER_PLAYER].attack += 2;
+            printf("攻撃力 %d -> %d\n", characters[CHARACTER_PLAYER].attack - 2, characters[CHARACTER_PLAYER].attack);
+            storyFlags.getWeapon = 1;
+        }
+            
+    }
 
     // if (storyFlags.getWeapon == 0) {
     //     printf("武器を手にいれた！\n");
@@ -64,7 +90,6 @@ void storyProcess() {
     //     printf("ボスをたおした！!\n");
     //     storyFlags.defeatedBoss = 1;
     // }
-}
 }
 void descriptionStory(const char *filename, const char *storytags) {
     system("clear");

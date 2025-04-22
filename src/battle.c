@@ -23,14 +23,6 @@ void Battleloop(){
         int nextMonster = MONSTER_START_INDEX + rand() % MONSTER_COUNT;
         Battle(nextMonster);
     }
-
-    printf("ゲームオーバー！\n");
-    printf("メニューに戻ります。\n");
-    getchar();
-    system("clear");
-    characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
-    characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
-    Mainmenu();
 }
 
 void enableRawMode(){
@@ -86,6 +78,13 @@ void Battle(int _monster){
                 {
                 case CHARACTER_PLAYER:
                     printf("%s は死んでしまった！\n", characters[CHARACTER_PLAYER].name);
+                    printf("ゲームオーバー！\n");
+                    printf("メニューに戻ります。\n");
+                    getchar();
+                    system("clear");
+                    characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                    characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                    Mainmenu();
                     break;
                 case CHARACTER_MONSTER:
                     strcpy(characters[characters[i].target].aa, "\n");
