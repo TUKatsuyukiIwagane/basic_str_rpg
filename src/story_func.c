@@ -53,7 +53,7 @@ void storyProcess() {
                 storyFlags.defeatedSlime = 1;
             }
             else{
-                descriptionStory("story_descript.txt", "[runAway_slime]");
+                descriptionStory("story_descript.txt", "[runAway_monster]");
                 characters[CHARACTER_PLAYER].hitpoints = 0;
                 printf("ゲームオーバー！\n");
                 printf("メニューに戻ります。\n");
@@ -86,8 +86,54 @@ void storyProcess() {
                     storyFlags.warriorAppeared = 1;
                     descriptionStory("story_descript.txt", "[village_battle]");
                     Battle(MONSTER_MADHAND);
+                    if (characters[characters[CHARACTER_PLAYER].target].hitpoints == 0) {
+                        storyFlags.defeatedMadhand = 1;
+                    }
+                    else{
+                        descriptionStory("story_descript.txt", "[runAway_monster]");
+                        characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                        characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                        printf("ゲームオーバー！\n");
+                        printf("メニューに戻ります。\n");
+                        getchar();
+                        system("clear");
+                        characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                        characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                        Mainmenu();
+                    }
                     Battle(MONSTER_MARDEOCTPASS);
+                    if (characters[characters[CHARACTER_PLAYER].target].hitpoints == 0) {
+                        storyFlags.defeatedOctpass = 1;
+                    }
+                    else{
+                        descriptionStory("story_descript.txt", "[runAway_monster]");
+                        characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                        characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                        printf("ゲームオーバー！\n");
+                        printf("メニューに戻ります。\n");
+                        getchar();
+                        system("clear");
+                        characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                        characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                        Mainmenu();
+                    }
                     Battle(MONSTER_CURSEDARMOR);
+                    if (characters[characters[CHARACTER_PLAYER].target].hitpoints == 0) {
+                        storyFlags.defeatedCursedaromor = 1;
+                    }
+                    else{
+                        descriptionStory("story_descript.txt", "[runAway_monster]");
+                        characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                        characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                        printf("ゲームオーバー！\n");
+                        printf("メニューに戻ります。\n");
+                        getchar();
+                        system("clear");
+                        characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                        characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                        Mainmenu();
+                    }
+                    
                     break;
                 case CHOICE_TWO:
                     descriptionStory("story_descript.txt", "[warrior_refuse]");

@@ -9,7 +9,9 @@ typedef struct {
     int getWeapon;
     int getVillage;
     int warriorAppeared;
-    int defeatedEnemy;
+    int defeatedMadhand;
+    int defeatedOctpass;
+    int defeatedCursedaromor;
     int getAlly;
     int researchCastle;
     int defeatedBoss;
