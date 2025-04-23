@@ -1,6 +1,7 @@
 #include "subfunc.h"
 #include <stdbool.h>
 #include <string.h>
+#include <unistd.h>
 
 int power(int num, int power){
     for (int i = 0; i < power; i++){
@@ -32,7 +33,13 @@ void printFile(const char *filename, const char *tags) {
         // if in tags, print line
         if (in_section) {
             if (strlen(line) > 0) {
-                printf("%s\n", line);
+                // print line with delay
+                for(int i = 0; i < strlen(line); i++){
+                    printf("%c", line[i]);
+                    fflush(stdout);
+                    usleep(50000);  // wait 0.05 seconds
+                }
+                printf("\n");
             }
         }
     }

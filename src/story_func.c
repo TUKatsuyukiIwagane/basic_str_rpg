@@ -82,11 +82,24 @@ void storyProcess() {
             selectChoice(choiceYesorNo);
             switch (characters[CHARACTER_PLAYER].command) {
                 case CHOICE_ONE:
-                    descriptionStory("story_descript.txt", "[warrior_join]");
+                    descriptionStory("story_descript.txt", "[warrior_ask]");
                     storyFlags.warriorAppeared = 1;
+                    descriptionStory("story_descript.txt", "[village_battle]");
+                    Battle(MONSTER_MADHAND);
+                    Battle(MONSTER_MARDEOCTPASS);
+                    Battle(MONSTER_CURSEDARMOR);
                     break;
                 case CHOICE_TWO:
                     descriptionStory("story_descript.txt", "[warrior_refuse]");
+                    descriptionStory("story_descript.txt", "[village_ruin]");
+                    characters[CHARACTER_PLAYER].hitpoints = 0;
+                    printf("ゲームオーバー！\n");
+                    printf("メニューに戻ります。\n");
+                    getchar();
+                    system("clear");
+                    characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                    characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                    Mainmenu();
                     break;
                 }
         }

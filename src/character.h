@@ -24,6 +24,8 @@ enum{
     MONSTER_PLAYER, // プレイヤ
     MONSTER_SLIME, // スライム
     MONSTER_MADHAND, //マドハンド
+    MONSTER_MARDEOCTPASS, //キラーオクトパス
+    MONSTER_CURSEDARMOR, //呪いの鎧
     MONSTER_MAX // モンスターの種類数
    }; 
 

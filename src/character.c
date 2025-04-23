@@ -32,7 +32,7 @@ Character monsters[MONSTER_MAX] = {
         0, // command
         0, // target
         3, // experience
-        1, // level
+        0, // level
         3, // gold
         0 // not in player controlled
     },
@@ -49,10 +49,44 @@ Character monsters[MONSTER_MAX] = {
         0, // command
         0, // target
         5, // experience
-        3, // level
+        1, // level
         12, // gold
         0 // not in player controlled
     },
+
+    //marderoctpass
+    {
+        10, // HP
+        10, // maxHP
+        5, // MP
+        5, // maxMP
+        6, // attack
+        "殺人蛸", // name
+        "≡(・◎・)≡\n",  // AA
+        0, // command
+        0, // target
+        7, // experience
+        1, // level
+        15, // gold
+        0 // not in player controlled
+    },
+
+    //cursedarmor
+    {
+        15, // HP
+        15, // maxHP
+        6, // MP
+        6, // maxMP
+        4, // attack
+        "呪われた鎧", // name
+        "|█＼[◎]／█|\n",  // AA
+        0, // command
+        0, // target
+        8, // experience
+        1, // level
+        20, // gold
+        0 // not in player controlled
+    }
 };
 
 
