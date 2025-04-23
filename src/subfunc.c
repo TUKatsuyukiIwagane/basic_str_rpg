@@ -37,7 +37,7 @@ void printFile(const char *filename, const char *tags) {
                 for(int i = 0; i < strlen(line); i++){
                     printf("%c", line[i]);
                     fflush(stdout);
-                    usleep(50000);  // wait 0.05 seconds
+                    // usleep(50000);  // wait 0.05 seconds
                 }
                 printf("\n");
             }

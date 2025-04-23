@@ -83,7 +83,6 @@ void storyProcess() {
             switch (characters[CHARACTER_PLAYER].command) {
                 case CHOICE_ONE:
                     descriptionStory("story_descript.txt", "[warrior_ask]");
-                    storyFlags.warriorAppeared = 1;
                     descriptionStory("story_descript.txt", "[village_battle]");
                     Battle(MONSTER_MADHAND);
                     if (characters[characters[CHARACTER_PLAYER].target].hitpoints == 0) {
@@ -133,22 +132,48 @@ void storyProcess() {
                         characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
                         Mainmenu();
                     }
-                    
+                    storyFlags.warriorAppeared = 1;
+                    break;
+                }
+            }
+        else if (storyFlags.getAlly == 0) {
+            descriptionStory("story_descript.txt", "[get_ally]");
+            characters[CHARACTER_PLAYER].attack *= 2;
+            //仲間とかの処理を開発したら変更。一時的にこう。
+            printf("攻撃力 %d -> %d\n", characters[CHARACTER_PLAYER].attack / 2, characters[CHARACTER_PLAYER].attack);
+            getchar(); // wait for enter key
+            storyFlags.getAlly = 1;
+        }
+        else if (storyFlags.researchCastle == 0) {
+            descriptionStory("story_descript.txt", "[research_castle]");
+            descriptionStory("story_descript.txt", "[caster_appear]");
+            selectChoice(choiceDecide);
+            switch (characters[CHARACTER_PLAYER].command) {
+                case CHOICE_ONE:
+                    descriptionStory("story_descript.txt", "[castle_battle]");
+                    Battle(MONSTER_CURSEDARMOR);
+                    if (characters[characters[CHARACTER_PLAYER].target].hitpoints == 0) {
+                        storyFlags.researchCastle = 1;
+                    }
+                    else{
+                        descriptionStory("story_descript.txt", "[runAway_monster]");
+                        characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                        characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                        printf("ゲームオーバー！\n");
+                        printf("メニューに戻ります。\n");
+                        getchar();
+                        system("clear");
+                        characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
+                        characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
+                        Mainmenu();
+                    }
                     break;
                 case CHOICE_TWO:
-                    descriptionStory("story_descript.txt", "[warrior_refuse]");
-                    descriptionStory("story_descript.txt", "[village_ruin]");
-                    characters[CHARACTER_PLAYER].hitpoints = 0;
-                    printf("ゲームオーバー！\n");
-                    printf("メニューに戻ります。\n");
-                    getchar();
-                    system("clear");
-                    characters[CHARACTER_PLAYER].hitpoints = characters[CHARACTER_PLAYER].maxHp;
-                    characters[CHARACTER_PLAYER].magicpoints = characters[CHARACTER_PLAYER].maxMp;
-                    Mainmenu();
+                    descriptionStory("story_descript.txt", "[runAway_monster]");
                     break;
                 }
         }
+        
     }
     // if (storyFlags.getWeapon == 0) {
     //     printf("武器を手にいれた！\n");

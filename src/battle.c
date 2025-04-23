@@ -90,9 +90,9 @@ void Battle(int _monster){
                     strcpy(characters[characters[i].target].aa, "\n");
                     DrawBattleScreen(); 
                     printf("Lv %d %s を倒した！\n", characters[CHARACTER_MONSTER].level, characters[characters[i].target].name);
-                    int rewardgold = 1 + rand() % characters[characters[i].target].gold;
+                    int rewardgold = characters[characters[i].target].gold + rand() % 3;
                     characters[CHARACTER_PLAYER].gold += rewardgold;
-                    int rewardexp = 1 + rand() % characters[characters[i].target].experience;
+                    int rewardexp = characters[characters[i].target].experience + rand() % 3;
                     characters[CHARACTER_PLAYER].experience += rewardexp;
                     printf("経験値 %d を手に入れた！\n", characters[characters[i].target].experience);
                     printf("%d ゴールドを手に入れた！\n", rewardgold);
