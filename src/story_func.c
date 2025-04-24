@@ -147,6 +147,7 @@ void storyProcess() {
         else if (storyFlags.researchCastle == 0) {
             descriptionStory("story_descript.txt", "[research_castle]");
             descriptionStory("story_descript.txt", "[caster_appear]");
+            descriptionStory("story_descript.txt", "[caster_warrior_talk]");
             selectChoice(choiceDecide);
             switch (characters[CHARACTER_PLAYER].command) {
                 case CHOICE_ONE:

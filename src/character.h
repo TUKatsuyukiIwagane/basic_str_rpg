@@ -1,7 +1,7 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 #define MONSTER_START_INDEX 1
-#define MONSTER_COUNT 2
+#define MONSTER_COUNT 4
 
 typedef struct{
     int hitpoints; // HP
