@@ -9,6 +9,6 @@ enum{
 
 void storyProcess();
 void descriptionStory(const char *filename , const char *storytags);
-void selectChoice(char choice_format[][4 * 3 + 1]);
+void selectChoice(char choice_format[][5 * 3 + 1]);
 
 #endif

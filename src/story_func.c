@@ -3,16 +3,17 @@
 #include "subfunc.h"
 #include "battle.h"
 #include "character.h"
+#include "mainmenu.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-char choiceYesorNo[CHOICE_MAX][4 * 3 + 1]={
+char choiceYesorNo[CHOICE_MAX][5 * 3 + 1]={
     "はい", // say yes
     "いいえ" // say no
 };
 
-char choiceDecide[CHOICE_MAX][4 * 3 + 1]={
+char choiceDecide[CHOICE_MAX][5 * 3 + 1]={
     "立ち向かう", // decide to fight
     "逃げ出す" // decide to run away
 };
@@ -203,7 +204,7 @@ void descriptionStory(const char *filename, const char *storytags) {
     getchar(); // wait for enter key
 }
 
-void selectChoice(char choice_format[][4 * 3 + 1]) {
+void selectChoice(char choice_format[][5 * 3 + 1]) {
     enableRawMode();
     while (1) {
         characters[CHARACTER_PLAYER].command = (CHOICE_MAX + characters[CHARACTER_PLAYER].command) % CHOICE_MAX;

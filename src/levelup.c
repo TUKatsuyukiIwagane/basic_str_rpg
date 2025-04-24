@@ -22,10 +22,10 @@ const int experienceTable[MAX_LEVEL] = {
 void LevelUp(int character){
     if (characters[character].experience >= experienceTable[characters[character].level]){
         characters[character].level++;
-        characters[character].hitpoints += power(3, characters[character].level);
-        characters[character].maxHp += power(3, characters[character].level);
-        characters[character].magicpoints += 1 + power(2, characters[character].level);
-        characters[character].maxMp += 1 + power(2, characters[character].level);
+        characters[character].hitpoints += power(characters[character].level, 3);
+        characters[character].maxHp += power(characters[character].level, 3);
+        characters[character].magicpoints += 1 + power(characters[character].level, 2);
+        characters[character].maxMp += 1 + power(characters[character].level, 2);
         characters[character].attack += 2 * characters[character].level;
         printf("%s はレベルアップした！\n", characters[character].name);
         printf("Lv: %d -> %d\n", characters[character].level - 1, characters[character].level);
